@@ -83,7 +83,7 @@ with open(execute_bat_path, 'w') as bat_file:
                     bat_file.write(f'@ECHO OFF\ncurl -k -b COOKIE.txt -X POST --data "@{json_file_name}" -H "Content-Type: application/json" https://10.54.145.1/api/mo/uni.json\nPAUSE\n')
 
 
-# Script to create VRF
+# Script to create the VRF
 # Modified function to take in file path instead of just file name
 def generate_jinja_template(values_dict, file_name):
     environment = Environment(loader=FileSystemLoader("templates/"))
