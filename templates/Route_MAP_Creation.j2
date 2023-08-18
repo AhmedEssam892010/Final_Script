@@ -1,0 +1,43 @@
+{
+  "totalCount": "1",
+  "imdata": [
+    {
+      "rtctrlProfile": {
+        "attributes": {
+          "annotation": "",
+          "descr": "",
+          "dn": "uni/tn-{{items.tenant}}/out-{{items.l3out}}/prof-{{items.name}}",
+          "name": "{{items.name}}",
+          "nameAlias": "",
+          "ownerKey": "",
+          "ownerTag": "",
+          "type": "combinable"
+        },
+        "children": [
+          {
+            "rtctrlCtxP": {
+              "attributes": {
+                "action": "permit",
+                "annotation": "",
+                "descr": "",
+                "name": "{{items.Route_Context}}",
+                "nameAlias": "",
+                "order": "0"
+              },
+              "children": [
+                {
+                  "rtctrlRsCtxPToSubjP": {
+                    "attributes": {
+                      "annotation": "",
+                      "tnRtctrlSubjPName": "{{items.rule}}"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

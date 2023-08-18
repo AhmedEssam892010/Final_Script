@@ -1,0 +1,140 @@
+{
+  "totalCount": "1",
+  "imdata": [
+    {
+      "l3extLIfP": {
+        "attributes": {
+          "annotation": "",
+          "descr": "",
+          "dn": "uni/tn-{{items.tenant}}/out-{{items.l3out}}/lnodep-{{items.l3out_node_profile}}/lifp-{{items.name}}",
+          "name": "{{items.name}}",
+          "nameAlias": "",
+          "ownerKey": "",
+          "ownerTag": "",
+          "prio": "unspecified",
+          "tag": "yellow-green"
+        },
+        "children": [
+          {
+            "l3extRsPathL3OutAtt": {
+              "attributes": {
+                "addr": "0.0.0.0",
+                "annotation": "",
+                "autostate": "disabled",
+                "descr": "{{items.name}}",
+                "encap": "vlan-{{items.vlan_encap_id}}",
+                "encapScope": "local",
+                "ifInstT": "ext-{{items.interface_type}}",
+                "ipv6Dad": "enabled",
+                "llAddr": "::",
+                "mac": "00:22:BD:F8:19:FF",
+                "mode": "{{items.trunk_mode}}",
+                "mtu": "inherit",
+                "tDn": "topology/pod-1/protpaths-{{items.left_node_id}}-{{items.right_node_id}}/pathep-[{{items.int_pol_group}}]",
+                "targetDscp": "unspecified"
+              },
+              "children": [
+                {
+                  "l3extMember": {
+                    "attributes": {
+                      "addr": "{{items.ip_addr_side_b}}",
+                      "annotation": "",
+                      "descr": "",
+                      "ipv6Dad": "enabled",
+                      "llAddr": "::",
+                      "name": "side_b",
+                      "nameAlias": "",
+                      "side": "B"
+                    },
+                    "children": [
+                      {
+                        "l3extIp": {
+                          "attributes": {
+                            "addr": "{{items.secondary_ip}}",
+                            "annotation": "",
+                            "descr": "",
+                            "ipv6Dad": "enabled",
+                            "name": "",
+                            "nameAlias": ""
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "l3extMember": {
+                    "attributes": {
+                      "addr": "{{items.ip_addr_side_a}}",
+                      "annotation": "",
+                      "descr": "",
+                      "ipv6Dad": "enabled",
+                      "llAddr": "::",
+                      "name": "side_a",
+                      "nameAlias": "",
+                      "side": "A"
+                    },
+                    "children": [
+                      {
+                        "l3extIp": {
+                          "attributes": {
+                            "addr": "{{items.secondary_ip}}",
+                            "annotation": "",
+                            "descr": "",
+                            "ipv6Dad": "enabled",
+                            "name": "",
+                            "nameAlias": ""
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "l3extRsNdIfPol": {
+              "attributes": {
+                "annotation": "",
+                "tnNdIfPolName": ""
+              }
+            }
+          },
+          {
+            "l3extRsLIfPCustQosPol": {
+              "attributes": {
+                "annotation": "",
+                "tnQosCustomPolName": ""
+              }
+            }
+          },
+          {
+            "l3extRsIngressQosDppPol": {
+              "attributes": {
+                "annotation": "",
+                "tnQosDppPolName": ""
+              }
+            }
+          },
+          {
+            "l3extRsEgressQosDppPol": {
+              "attributes": {
+                "annotation": "",
+                "tnQosDppPolName": ""
+              }
+            }
+          },
+          {
+            "l3extRsArpIfPol": {
+              "attributes": {
+                "annotation": "",
+                "tnArpIfPolName": ""
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

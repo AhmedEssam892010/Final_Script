@@ -1,0 +1,63 @@
+{
+  "totalCount": "1",
+  "imdata": [
+    {
+      "vzBrCP": {
+        "attributes": {
+          "annotation": "",
+          "descr": "",
+          "dn": "uni/tn-{{items.tenant}}/brc-{{items.contract_name}}",
+          "intent": "install",
+          "name": "{{items.contract_name}}",
+          "nameAlias": "",
+          "ownerKey": "",
+          "ownerTag": "",
+          "prio": "unspecified",
+          "scope": "context",
+          "targetDscp": "unspecified"
+        },
+        "children": [
+          {
+            "vzSubj": {
+              "attributes": {
+                "annotation": "",
+                "consMatchT": "AtleastOne",
+                "descr": "",
+                "name": "{{items.subject}}",
+                "nameAlias": "",
+                "prio": "unspecified",
+                "provMatchT": "AtleastOne",
+                "revFltPorts": "yes",
+                "targetDscp": "unspecified"
+              },
+              "children": [
+                {% if items.Service_Graph_template_name %}
+                {
+                  "vzRsSubjGraphAtt": {
+                    "attributes": {
+                      "annotation": "",
+                      "directives": "",
+                      "tnVnsAbsGraphName": "{{items.Service_Graph_template_name}}"
+                    }
+                  }
+                },
+                {% endif %}
+                {
+                  "vzRsSubjFiltAtt": {
+                    "attributes": {
+                      "action": "permit",
+                      "annotation": "",
+                      "directives": "",
+                      "priorityOverride": "default",
+                      "tnVzFilterName": "ANY"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "totalCount": "1",
+  "imdata": [
+    {
+      "fvRsProv": {
+        "attributes": {
+          "annotation": "",
+		  {% if items.Provider_type == 'External_EPG' %}
+          "dn": "uni/tn-{{items.tenant}}/out-{{items.Provider_l3out}}/instP-{{items.Provider_Ext_EPG}}/rsprov-{{items.contract_name}}",
+		  {% else %}
+		  "dn": "uni/tn-{{items.tenant}}/ap-{{items.App_profile}}/epg-{{items.Provider_EPG}}/rsprov-{{items.contract_name}}",
+		  {% endif %}
+          "intent": "install",
+          "matchT": "AtleastOne",
+          "prio": "unspecified",
+          "tnVzBrCPName": "{{items.contract_name}}"
+        }
+      }
+    }
+  ]
+}

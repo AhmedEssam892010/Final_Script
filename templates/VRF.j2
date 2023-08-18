@@ -1,0 +1,100 @@
+{
+  "totalCount": "1",
+  "imdata": [
+    {
+      "fvCtx": {
+        "attributes": {
+          "annotation": "",
+          "bdEnforcedEnable": "no",
+          "descr": "{{items.description}}",
+          "dn": "uni/tn-{{items.tenant}}/ctx-{{items.name}}",
+          "ipDataPlaneLearning": "enabled",
+          "knwMcastAct": "permit",
+          "name": "{{items.name}}",
+          "nameAlias": "{{items.name}}",
+          "ownerKey": "",
+          "ownerTag": "",
+          "pcEnfDir": "ingress",
+          "pcEnfPref": "enforced"
+        },
+        "children": [
+          {
+            "fvRsVrfValidationPol": {
+              "attributes": {
+                "annotation": "",
+                "tnL3extVrfValidationPolName": ""
+              }
+            }
+          },
+          {
+            "vzAny": {
+              "attributes": {
+                "annotation": "",
+                "descr": "",
+                "matchT": "AtleastOne",
+                "name": "",
+                "nameAlias": "",
+                "prefGrMemb": "disabled"
+              },
+              "children": [
+                {
+                  "vzRsAnyToProv": {
+                    "attributes": {
+                      "annotation": "",
+                      "intent": "install",
+                      "matchT": "AtleastOne",
+                      "prio": "unspecified",
+                      "tnVzBrCPName": "{{items.contract_name}}"
+                    }
+                  }
+                },
+                {
+                  "vzRsAnyToCons": {
+                    "attributes": {
+                      "annotation": "",
+                      "intent": "install",
+                      "prio": "unspecified",
+                      "tnVzBrCPName": "{{items.contract_name}}"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "fvRsOspfCtxPol": {
+              "attributes": {
+                "annotation": "",
+                "tnOspfCtxPolName": ""
+              }
+            }
+          },
+          {
+            "fvRsCtxToEpRet": {
+              "attributes": {
+                "annotation": "",
+                "tnFvEpRetPolName": ""
+              }
+            }
+          },
+          {
+            "fvRsCtxToExtRouteTagPol": {
+              "attributes": {
+                "annotation": "",
+                "tnL3extRouteTagPolName": ""
+              }
+            }
+          },
+          {
+            "fvRsBgpCtxPol": {
+              "attributes": {
+                "annotation": "",
+                "tnBgpCtxPolName": ""
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

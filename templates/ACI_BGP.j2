@@ -1,0 +1,52 @@
+{
+  "totalCount": "1",
+  "imdata": [
+    {
+      "bgpPeerP": {
+        "attributes": {
+          "addr": "{{items.bgp_peer_ip}}",
+          "addrTCtrl": "af-ucast",
+          "adminSt": "enabled",
+          "allowedSelfAsCnt": "3",
+          "annotation": "",
+          "ctrl": "",
+          "descr": "",
+          {% if items.status == 'loopback' %}
+          "dn": "uni/tn-{{items.tenant}}/out-{{items.l3out}}/lnodep-{{items.l3out_node_profile}}/peerP-[{{items.bgp_peer_ip}}]",
+          {% elif items.status == 'physical_ip' %}
+          "dn": "uni/tn-{{items.tenant}}/out-{{items.l3out}}/lnodep-{{items.l3out_node_profile}}/lifp-{{items.name}}/rspathL3OutAtt-[topology/pod-1/protpaths-{{items.left_node_id}}-{{items.right_node_id}}/pathep-[{{items.interface_policy_group}}]]/peerP-[{{items.bgp_peer_ip}}]",
+		  {% else %}
+		  "dn": "uni/tn-{{items.tenant}}/out-{{items.l3out}}/lnodep-{{items.l3out_node_profile}}/lifp-{{items.name}}/rspathL3OutAtt-[topology/pod-1/paths-{{items.left_node_id}}/pathep-[{{items.interface_policy_group}}]]/peerP-[{{items.bgp_peer_ip}}]",
+          {% endif %}
+          "name": "",
+          "nameAlias": "",
+          "peerCtrl": "bfd",
+          "privateASctrl": "",
+          "ttl": "{{items.ttl}}",
+          "weight": "0"
+        },
+        "children": [
+          {
+            "bgpRsPeerPfxPol": {
+              "attributes": {
+                "annotation": "",
+                "tnBgpPeerPfxPolName": ""
+              }
+            }
+          },		  
+          {
+            "bgpAsP": {
+              "attributes": {
+                "annotation": "",
+                "asn": "{{items.remote_bgp_as}}",
+                "descr": "",
+                "name": "",
+                "nameAlias": ""
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

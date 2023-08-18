@@ -1,0 +1,20 @@
+{
+  "totalCount": "1",
+  "imdata": [
+    {
+      "fvRsCons": {
+        "attributes": {
+          "annotation": "",
+		  {% if items.Consumer_type == 'External_EPG' %}
+          "dn": "uni/tn-{{items.tenant}}/out-{{items.Consumer_l3out}}/instP-{{items.Consumer_Ext_EPG}}/rscons-{{items.contract_name}}",
+		  {% else %}
+		  "dn": "uni/tn-{{items.tenant}}/ap-{{items.App_profile}}/epg-{{items.Consumer_EPG}}/rscons-{{items.contract_name}}",
+		  {% endif %}
+          "intent": "install",
+          "prio": "unspecified",
+          "tnVzBrCPName": "{{items.contract_name}}"
+        }
+      }
+    }
+  ]
+}

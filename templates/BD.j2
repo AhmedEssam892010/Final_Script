@@ -1,0 +1,108 @@
+{
+  "totalCount": "{{ TotalCount }}",
+  "imdata": [
+    {
+      "fvBD": {
+        "attributes": {
+          "OptimizeWanBandwidth": "no",
+          "annotation": "",
+          "arpFlood": "{{items.arp_flood}}",
+          "descr": "{{items.description}}",
+          "dn": "uni/tn-{{items.tenant}}/BD-{{items.name}}",
+          "epClear": "no",
+          "epMoveDetectMode": "",
+          "hostBasedRouting": "no",
+          "intersiteBumTrafficAllow": "no",
+          "intersiteL2Stretch": "no",
+          "ipLearning": "{{items.limit_ip_learning_to_subnet}}",
+          "ipv6McastAllow": "no",
+          "limitIpLearnToSubnets": "{{items.limit_ip_learning_to_subnet}}",
+          "llAddr": "::",
+          "mac": "00:22:BD:F8:19:FF",
+          "mcastAllow": "no",
+          "multiDstPktAct": "{{items.multi_dest_flood}}",
+          "name": "{{items.name}}",
+          "nameAlias": "",
+          "ownerKey": "",
+          "ownerTag": "",
+          "type": "regular",
+          "unicastRoute": "{{items.unicast_routing}}",
+          "unkMacUcastAct": "{{items.l2_unknown_unicast}}",
+          "unkMcastAct": "{{items.l3_unknown_multicast}}",
+          "v6unkMcastAct": "flood",
+          "vmac": "not-applicable"
+        },
+        "children": [
+          {% if items.bd_gateway_ip %}
+          {
+            "fvSubnet": {
+              "attributes": {
+                "annotation": "",
+                "ctrl": "",
+                "descr": "",
+                "ip": "{{items.bd_gateway_ip}}",
+                "name": "",
+                "nameAlias": "",
+                "preferred": "no",
+                "scope": "{{items.subnet_type}}",
+                "virtual": "no"
+              }
+            }
+          },
+          {% endif %}
+          {
+            "fvRsMldsn": {
+              "attributes": {
+                "annotation": "",
+                "tnMldSnoopPolName": ""
+              }
+            }
+          },
+          {
+            "fvRsIgmpsn": {
+              "attributes": {
+                "annotation": "",
+                "tnIgmpSnoopPolName": ""
+              }
+            }
+          },
+          {
+            "fvRsCtx": {
+              "attributes": {
+                "annotation": "",
+                "tnFvCtxName": "{{items.context}}"
+              }
+            }
+          },
+          {
+            "fvRsBdToEpRet": {
+              "attributes": {
+                "annotation": "",
+                "resolveAct": "resolve",
+                "tnFvEpRetPolName": ""
+              }
+            }
+          },
+          {% if items.bd_gateway_ip %}
+          {
+            "fvRsBDToOut": {
+              "attributes": {
+                "annotation": "",
+                "tnL3extOutName": "{{items.l3_out}}"
+              }
+            }
+          },
+          {% endif %}
+          {
+            "fvRsBDToNdP": {
+              "attributes": {
+                "annotation": "",
+                "tnNdIfPolName": ""
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

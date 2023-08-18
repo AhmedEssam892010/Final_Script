@@ -1,0 +1,70 @@
+{
+  "totalCount": "1",
+  "imdata": [
+    {
+      "l3extLNodeP": {
+        "attributes": {
+          "annotation": "",
+          "configIssues": "",
+          "descr": "",
+          "dn": "uni/tn-{{items.tenant}}/out-{{items.l3out}}/lnodep-{{items.name}}",
+          "name": "{{items.name}}",
+          "nameAlias": "",
+          "ownerKey": "",
+          "ownerTag": "",
+          "tag": "yellow-green",
+          "targetDscp": "unspecified"
+        },
+        "children": [
+          {
+            "l3extRsNodeL3OutAtt": {
+              "attributes": {
+                "annotation": "",
+                "configIssues": "",
+                "rtrId": "{{items.router_id}}",
+                "rtrIdLoopBack": "{{items.router_id_as_loopback}}",
+                "tDn": "topology/pod-1/node-{{items.node_id}}"
+              }
+            }
+          }
+          {% if items.loopback %}
+          ,
+          {
+            "l3extLoopBackIfP": {
+              "attributes": {
+                "addr": "{{items.Loopback}}",
+                "annotation": "",
+                "descr": "",
+                "name": "",
+                "nameAlias": ""
+              }
+            }
+          }
+          {% endif %}
+          {% if items.bgp == 'yes' %}
+          ,
+          {
+            "bgpProtP": {
+              "attributes": {
+                "annotation": "",
+                "name": "",
+                "nameAlias": ""
+              },
+              "children": [
+                {
+                  "bgpRsBgpNodeCtxPol": {
+                    "attributes": {
+                      "annotation": "",
+                      "tnBgpCtxPolName": "{{items.BGP_profile_timers}}"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+          {% endif %}
+        ]
+      }
+    }
+  ]
+}

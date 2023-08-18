@@ -1,0 +1,58 @@
+{
+  "totalCount": "1",
+  "imdata": [
+    {
+      "l3extInstP": {
+        "attributes": {
+          "annotation": "",
+          "descr": "",
+          "dn": "uni/tn-{{items.tenant}}/out-{{items.l3out}}/instP-{{items.name}}",
+          "exceptionTag": "",
+          "floodOnEncap": "disabled",
+          "matchT": "AtleastOne",
+          "name": "{{items.name}}",
+          "nameAlias": "",
+          "prefGrMemb": "exclude",
+          "prio": "unspecified",
+          "targetDscp": "unspecified"
+        },
+        "children": [
+          {
+            "l3extSubnet": {
+              "attributes": {
+                "aggregate": "",
+                "annotation": "",
+                "descr": "",
+                "ip": "{{items.subnet}}",
+                "name": "",
+                "nameAlias": "",
+                "scope": "import-security"
+              }
+            }
+          },
+          {
+            "fvRsCustQosPol": {
+              "attributes": {
+                "annotation": "",
+                "tnQosCustomPolName": ""
+              }
+            }
+          }
+          {% if items.consumed_contract and items.consumed_contract.strip() != '' %}
+          ,
+          {
+            "fvRsCons": {
+              "attributes": {
+                "annotation": "",
+                "intent": "install",
+                "prio": "unspecified",
+                "tnVzBrCPName": "{{items.consumed_contract}}"
+              }
+            }
+          }
+          {% endif %}
+        ]
+      }
+    }
+  ]
+}

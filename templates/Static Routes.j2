@@ -1,0 +1,37 @@
+{
+  "totalCount": "{{ next_hop_count }}",
+  "imdata": [
+    {
+      "ipRouteP": {
+        "attributes": {
+          "aggregate": "{{ items.aggregate }}",
+          "annotation": "",
+          "descr": "",
+          "dn": "uni/tn-{{ items.tenant }}/out-{{ items.l3out }}/lnodep-{{ items.name }}/rsnodeL3OutAtt-[topology/pod-1/node-{{ items.node_id }}]/rt-[{{ items.static_IP }}]",
+          "ip": "{{ items.static_IP }}",
+          "name": "",
+          "nameAlias": "",
+          "pref": "{{ items.preference }}",
+          "rtCtrl": "bfd"
+        },
+        "children": [
+          {% for nexthop in nexthops %}
+          {
+            "ipNexthopP": {
+              "attributes": {
+                "annotation": "",
+                "descr": "",
+                "name": "",
+                "nameAlias": "",
+                "nhAddr": "{{ nexthop }}",
+                "pref": "{{ items.preference }}",
+                "type": "prefix"
+              }
+            }
+          }{% if not loop.last %},{% endif %}
+          {% endfor %}
+        ]
+      }
+    }
+  ]
+}

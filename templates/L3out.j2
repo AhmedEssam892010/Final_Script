@@ -1,0 +1,50 @@
+{
+  "totalCount": "1",
+  "imdata": [
+    {
+      "l3extOut": {
+        "attributes": {
+          "annotation": "",
+          "descr": "{{items.name}}",
+          "dn": "uni/tn-{{items.tenant}}/out-{{items.name}}",
+          "enforceRtctrl": "export,import",
+          "name": "{{items.name}}",
+          "nameAlias": "",
+          "ownerKey": "",
+          "ownerTag": "",
+          "targetDscp": "unspecified"
+        },
+        "children": [
+          {
+            "l3extRsL3DomAtt": {
+              "attributes": {
+                "annotation": "",
+                "tDn": "uni/l3dom-{{items.l3out_domain}}"
+              }
+            }
+          },
+          {
+            "l3extRsEctx": {
+              "attributes": {
+                "annotation": "",
+                "tnFvCtxName": "{{items.vrf}}"
+              }
+            }
+          }
+          {% if items.enable_bgp == 'yes' %}
+          ,
+          {
+            "bgpExtP": {
+              "attributes": {
+                "annotation": "",
+                "descr": "",
+                "nameAlias": ""
+              }
+            }
+          }
+          {% endif %}
+        ]
+      }
+    }
+  ]
+}
